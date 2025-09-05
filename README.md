@@ -14,7 +14,7 @@ and
 chord_keybinds = ["<","y","x","c","v","b","n","m",",",".","-"]
 ```
 
-## TODO: better score import/playback logic, currently takes files with the format 
+- [ ] TODO: better score import/playback logic, currently takes files with the format 
 ```
 [
     {"notes": ["F4", "A4", "C5"], "duration": 1.0},
