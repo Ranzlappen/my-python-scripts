@@ -11,9 +11,9 @@ SAMPLE_RATE = 44100
 
 # Global parameters for waveform
 wave_amplitude = 0.25
-decay_rate = 0.01
+decay_rate = 0.5
 note_duration = 10.0
-release_fade = 0.5  # seconds for fade out after release
+release_fade = 0.1  # seconds for fade out after release
 note_to_button = {}
 
 # Octave range
@@ -45,7 +45,16 @@ def note_wave(note, duration=None, decay=None, amplitude=None):
         amplitude = wave_amplitude
     f = note_freq(note)
     t = np.linspace(0, duration, int(SAMPLE_RATE * duration), False)
-    return amplitude * np.sin(2 * np.pi * f * t) * np.exp(-decay * t)
+    wave = amplitude * np.sin(2 * np.pi * f * t) * np.exp(-decay * t)
+
+    # Short fade-in and fade-out at edges
+    fade_len = int(0.005 * SAMPLE_RATE)  # 5 ms
+    if len(wave) > 2 * fade_len:
+        fade_in = np.linspace(0, 1, fade_len)
+        fade_out = np.linspace(1, 0, fade_len)
+        wave[:fade_len] *= fade_in
+        wave[-fade_len:] *= fade_out
+    return wave
 
 # --- Audio handling ---
 active_notes = {}
@@ -133,6 +142,7 @@ def stop_chord(idx):
 # --- GUI ---
 root = tk.Tk()
 root.title("Synth Piano")
+root.iconbitmap("icon.ico")
 
 white_notes = ["C","D","E","F","G","A","B"]
 black_notes = ["C#","D#",None,"F#","G#","A#",None]
