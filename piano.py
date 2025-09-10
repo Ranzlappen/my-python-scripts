@@ -142,7 +142,7 @@ def stop_chord(idx):
 # --- GUI ---
 root = tk.Tk()
 root.title("Synth Piano")
-root.iconbitmap("icon.ico")
+root.iconbitmap("synthpiano.ico")
 
 white_notes = ["C","D","E","F","G","A","B"]
 black_notes = ["C#","D#",None,"F#","G#","A#",None]
