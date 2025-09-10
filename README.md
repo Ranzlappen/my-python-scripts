@@ -1,4 +1,4 @@
-# my-python-scripts
+# [Synth Piano Pre-Release Download .exe](https://github.com/Ranzlappen/synth-piano/releases/tag/prerelease)
 # synth piano for personal testing and songwriting/covering purposes
 default keybinds are (german keyboard layout) 
 
@@ -36,3 +36,7 @@ chord_keybinds = ["<","y","x","c","v","b","n","m",",",".","-"]
 as score.json
 
 ![Screenshot](Screenshot%202025-09-05%20190551.png)
+
+# Changelog
+## Prerelease 1
+- Attempt at fixing cutoffs, added ai icon
